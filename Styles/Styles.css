@@ -1,7 +1,21 @@
-img {
+/* The object fit property was used to preserve the aspect ratio of the images 
+and the application is on any image within a div with the homepage class.
+https://stackoverflow.com/questions/17290701/maintain-image-aspect-ratio-in-carousel - Naoise.*/
+
+.homepage-img>img {
         height: 500px;
         width: 500px;
         object-fit: contain;
 }
-/* The object fit property was used to preserve the aspect ratio of the images 
-https://stackoverflow.com/questions/17290701/maintain-image-aspect-ratio-in-carousel - Naoise.*/
+
+/*Copied from stack overflow to thicken the arrows on the buttons 
+https://stackoverflow.com/questions/46249541/change-arrow-colors-in-bootstraps-carousel - Naoise.*/
+
+.carousel-control-prev-icon {
+ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+
