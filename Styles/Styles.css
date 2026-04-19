@@ -1,0 +1,7 @@
+img {
+        height: 500px;
+        width: 500px;
+        object-fit: contain;
+}
+/* The object fit property was used to preserve the aspect ratio of the images 
+https://stackoverflow.com/questions/17290701/maintain-image-aspect-ratio-in-carousel - Naoise.*/
