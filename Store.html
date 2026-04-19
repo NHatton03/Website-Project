@@ -1,11 +1,43 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="Styles/Styles.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Styles/Styles.css" rel = "stylesheet">
+    <title>Store page</title>
 </head>
 <body>
-    
+
+    <div class="container">
+    <header>
+        <img src="Images/BrandLogo.png" alt="failed" class="logo">
+        
+        <div class="menu">
+            <button class="menu-btn" id="menuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="dropdown">
+                <a href="#">Home</a>
+                <a href="#">Shop</a>
+                <a href="#">Checkout</a>
+            </div>
+        </div>
+
+        <form class="search-box">
+            <input type="text" placeholder="What are you looking for?">
+            <button type="submit"><img src="Images/searchBarIcon.png" class="search-btn"></button>
+            <a href="Checkout.html" class="checkout-btn">
+               <img src="Images/shoppingCart.png" alt="Checkout">
+            </a>
+        </form>
+        
+
+
+    </header>
+    </div>
 </body>
-<script src = "Scripts/Script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="Scripts/Script.js"></script>
 </html>
