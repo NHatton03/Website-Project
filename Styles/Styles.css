@@ -22,39 +22,40 @@ https://stackoverflow.com/questions/46249541/change-arrow-colors-in-bootstraps-c
 /* looks messy but */
 
 header {
-display: flex;
-align-items: center;
-gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 2%;
 }
 
 .container {
-  max-width: 1200px;   
+  max-width: 1200px;
   margin: 0 auto;
-  margin-top: 20px;     
-  padding: 0 20px;  
+  margin-top: 20px;
+  padding: 0 20px;
 }
 
 .logo {
-  
-  width: 250px;
+  width: 21%;
   height: auto;
   object-fit: contain;
 }
 
 .search-box {
   display: flex;
-  gap: 8px;
+  gap: 1%;
+  flex: 1;
 }
 
 .search-box input {
-padding: 8px 150px;
-width: 200px;
-border: 1px solid #ccc;
-border-radius: 6px;
+  padding: 8px 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: center;
 }
 
 .search-box button {
-  padding: 20px 22px;
+  padding: 14px 1.5%;
   border: none;
   border-radius: 6px;
   background: #333;
@@ -63,7 +64,8 @@ border-radius: 6px;
 }
 
 .search-btn {
-  width: 20px;
+  width: 2%;
+  min-width: 20px;
   height: 22px;
   padding: 0;
   display: flex;
@@ -72,7 +74,8 @@ border-radius: 6px;
 }
 
 .menu-btn {
-  width: 44px;
+  width: 4%;
+  min-width: 44px;
   height: 44px;
   border: none;
   background: none;
@@ -121,7 +124,8 @@ border-radius: 6px;
 }
 
 .checkout-btn {
-  width: 44px;
+  width: 4%;
+  min-width: 44px;
   height: 44px;
   display: flex;
   align-items: center;
@@ -129,10 +133,9 @@ border-radius: 6px;
   text-decoration: none;
 }
 
-.checkout-btn img {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-  background-color: #333;
+.cart-btn {
+  width: 2%;
+  min-width: 22px;
+  height: 22px;
 }
 
