@@ -33,7 +33,7 @@ function acknowledgeSuggestion(){
             suggestionSection.innerHTML = "Already in stock!";
         }
     }
-    if (!products.includes(suggestion)){
+    if (!products.includes(suggestion) && suggestion != ""){
         products.push(suggestion);
     }
 
