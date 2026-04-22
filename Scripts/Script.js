@@ -38,3 +38,39 @@ function acknowledgeSuggestion(){
     }
 
 }
+
+//Scripting logic for the newsletter on index - Naoise.
+let yesButton = document.getElementById("yesButton").addEventListener("click", newsletterYesResponse);
+let noButton = document.getElementById("noButton").addEventListener("click", newsletterNoResponse);;
+let newsletterBox = document.getElementById("newsletterBox");
+subscriberCheck();
+
+//Stores the selection in session storage so the user isn't constantly prompted - Naoise.
+function newsletterYesResponse(){
+    newsletterBox.innerHTML =  "Subscribed!";
+    document.getElementById("yesButton").style.display = "none";
+    document.getElementById("noButton").style.display = "none";
+    sessionStorage.setItem("Subscribed", "true");
+    
+}
+
+function newsletterNoResponse(){
+    newsletterBox.innerHTML = "";
+    document.getElementById("noButton").style.display = "none";
+    document.getElementById("yesButton").style.display = "none";
+    sessionStorage.setItem("Subscribed", "false");
+}
+
+
+function subscriberCheck(){
+    if (sessionStorage.getItem("Subscribed") === "true"){
+        newsletterBox.innerHTML = "Subscribed!";
+        document.getElementById("noButton").style.display = "none";
+        document.getElementById("yesButton").style.display = "none";        
+    } else if (sessionStorage.getItem("Subscribed") === "false"){
+        newsletterBox.innerHTML = "";
+        document.getElementById("noButton").style.display = "none";
+        document.getElementById("yesButton").style.display = "none";
+    } 
+}
+
