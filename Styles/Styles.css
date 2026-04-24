@@ -6,7 +6,27 @@ https://stackoverflow.com/questions/17290701/maintain-image-aspect-ratio-in-caro
         height: 500px;
         width: 500px;
         object-fit: contain;
+
 }
+
+/* Styling for the images on the store page based on the code above - Naoise.*/
+.storepage-img>img{
+        height: 200px;
+        width: 200px;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+        
+}
+
+/*.storepage-img{
+  overflow: hidden;
+}*/
+/*Transforming the scale down on mouse hover*/
+.storepage-img:hover img{
+  transform: scale(0.8);
+}
+
+
 
 /*Copied from stack overflow to thicken the arrows on the buttons 
 https://stackoverflow.com/questions/46249541/change-arrow-colors-in-bootstraps-carousel - Naoise.*/
