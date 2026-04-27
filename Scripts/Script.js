@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 let suggestionButton = document.getElementById("suggestionButton").addEventListener("click", acknowledgeSuggestion);
 let suggestionSection = document.getElementById("suggestionSection");
 let products = ["Zoom H5 Recorder", "Rode Wireless Microphone", "Ten Channel Stereo Mixer", "SubZero Radio Microphone", "XLR Cable"];
+let suggestions = [];
 
 
 function acknowledgeSuggestion(){
@@ -33,9 +34,13 @@ function acknowledgeSuggestion(){
             suggestionSection.innerHTML = "Already in stock!";
         }
     }
-    if (!products.includes(suggestion) && suggestion != ""){
-        products.push(suggestion);
+    if (!suggestions.includes(suggestion) && suggestion != "" && !products.includes(suggestion)){
+        suggestions.push(suggestion);
+    } else if (suggestions.includes(suggestion) && !products.includes(suggestion)){
+        suggestionSection.innerHTML = "Suggestion already logged.";
     }
+
+    
 
 }
 
