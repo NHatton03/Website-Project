@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
     const button = document.getElementById("menuButton");
     const dropdown = document.querySelector(".dropdown");
 
@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!button || !dropdown) return;
 
-    button.addEventListener("click", () => {
+    button.addEventListener("click", function () {
         dropdown.classList.toggle("show");
     });
 });
@@ -14,68 +14,102 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+//Scripting logic for the suggestion box and the newsletter choice on index and the search function on store - Naoise.
 
-//Scripting logic for the suggestion button on index - Naoise.
-let suggestionButton = document.getElementById("suggestionButton").addEventListener("click", acknowledgeSuggestion);
-let suggestionSection = document.getElementById("suggestionSection");
-let products = ["Zoom H5 Recorder", "Rode Wireless Microphone", "Ten Channel Stereo Mixer", "SubZero Radio Microphone", "XLR Cable"];
-let suggestions = [];
+//Function that checks if the id is present on the current page and if it is it uses the function that was passed in, every function and the corresponding id should be passed into this one as to avoid the site constantly checking for an id that isn't there - Naoise.
+function onElement(id, callback) {
+    const el = document.getElementById(id);
+    if (el) callback(el);
+}
 
 
-function acknowledgeSuggestion(){
-    let suggestion = document.getElementById("suggestionBox").value;
-    if(suggestion != ""){
-        suggestionSection.innerHTML = "Thank you for the suggestion!";
-    } else {
-        suggestionSection.innerHTML = "Please enter a valid suggestion.";
-    }
-    for(let i = 0; i < products.length; i++){
-        if(suggestion === products[i]){
+// Suggestion Box on index
+onElement("suggestionButton", function () {
+    
+    const suggestionSection = document.getElementById("suggestionSection");
+    const products = ["Zoom H5 Recorder", "Rode Wireless Microphone", "Ten Channel Stereo Mixer", "SubZero Radio Microphone", "XLR Cable"];
+    const suggestions = [];
+
+    suggestionButton.addEventListener("click", function(){
+        const suggestion = document.getElementById("suggestionBox").value.trim();
+
+        if (suggestion === "") {
+            suggestionSection.innerHTML = "Please enter a valid suggestion.";
+            return;
+        }
+
+        //Loops through array to check if the suggested product is already there.
+        for (let i = 0; i < products.length; i++) {
+            if (suggestion.toLowerCase() === products[i].toLowerCase()) {
             suggestionSection.innerHTML = "Already in stock!";
+            return;
+        } 
+        }
+        //Checks if the suggestion has already been inputed.
+        if (suggestions.includes(suggestion) && !products.includes(suggestion)){
+            suggestionSection.innerHTML = "Suggestion already logged.";
+        } else if (!suggestions.includes(suggestion) && !products.includes(suggestion) && suggestion != ""){
+            suggestionSection.innerHTML = "Thank you for the suggestion!";
+            suggestions.push(suggestion);
+        }
+        
+    });
+});
+
+
+// Newsletter on index
+onElement("newsletterBox", function () {
+    
+    const yesButton = document.getElementById("yesButton");
+    const noButton = document.getElementById("noButton");
+
+    //Function to hide the buttons
+    function hideButtons() {
+        yesButton.style.display = "none";
+        noButton.style.display = "none";
+    }
+
+    //Function that checks if the user is subscribed
+    function subscriberCheck() {
+        const status = sessionStorage.getItem("Subscribed");
+        if (status === "true") {
+            newsletterBox.innerHTML = "Subscribed!";
+            hideButtons();
+        } else if (status === "false") {
+            newsletterBox.innerHTML = "";
+            hideButtons();
         }
     }
-    if (!suggestions.includes(suggestion) && suggestion != "" && !products.includes(suggestion)){
-        suggestions.push(suggestion);
-    } else if (suggestions.includes(suggestion) && !products.includes(suggestion)){
-        suggestionSection.innerHTML = "Suggestion already logged.";
+
+    //Event listeners that calls a function that changes the text and buttons if clicked
+    yesButton.addEventListener("click", function () {
+        newsletterBox.innerHTML = "Subscribed!";
+        hideButtons();
+        sessionStorage.setItem("Subscribed", "true");
+    });
+
+    noButton.addEventListener("click", function () {
+        newsletterBox.innerHTML = "";
+        hideButtons();
+        sessionStorage.setItem("Subscribed", "false");
+    });
+
+    subscriberCheck();
+});
+
+
+// Search / Filter on store
+onElement("searchBar", function () {
+    
+    function filterProducts() {
+        const query = searchBar.value.toLowerCase().trim();
+        const products = document.querySelectorAll("#catalog .col.storepage-img");
+
+        products.forEach(function (product) {
+            const name = product.querySelector("h5").textContent.toLowerCase();
+            product.style.display = (query === "" || name.includes(query)) ? "" : "none";
+        });
     }
 
-    
-
-}
-
-//Scripting logic for the newsletter on index - Naoise.
-let yesButton = document.getElementById("yesButton").addEventListener("click", newsletterYesResponse);
-let noButton = document.getElementById("noButton").addEventListener("click", newsletterNoResponse);;
-let newsletterBox = document.getElementById("newsletterBox");
-subscriberCheck();
-
-//Stores the selection in session storage so the user isn't constantly prompted - Naoise.
-function newsletterYesResponse(){
-    newsletterBox.innerHTML =  "Subscribed!";
-    document.getElementById("yesButton").style.display = "none";
-    document.getElementById("noButton").style.display = "none";
-    sessionStorage.setItem("Subscribed", "true");
-    
-}
-
-function newsletterNoResponse(){
-    newsletterBox.innerHTML = "";
-    document.getElementById("noButton").style.display = "none";
-    document.getElementById("yesButton").style.display = "none";
-    sessionStorage.setItem("Subscribed", "false");
-}
-
-
-function subscriberCheck(){
-    if (sessionStorage.getItem("Subscribed") === "true"){
-        newsletterBox.innerHTML = "Subscribed!";
-        document.getElementById("noButton").style.display = "none";
-        document.getElementById("yesButton").style.display = "none";        
-    } else if (sessionStorage.getItem("Subscribed") === "false"){
-        newsletterBox.innerHTML = "";
-        document.getElementById("noButton").style.display = "none";
-        document.getElementById("yesButton").style.display = "none";
-    } 
-}
-
+    searchBar.addEventListener("input", filterProducts);
+});
