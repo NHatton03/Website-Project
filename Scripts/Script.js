@@ -103,11 +103,18 @@ onElement("searchBar", function () {
     
     function filterProducts() {
         const query = searchBar.value.toLowerCase().trim();
+        //selects all elements inside a catalog with both col and storepage classes and stores them in a list.
         const products = document.querySelectorAll("#catalog .col.storepage-img");
 
+        //forEach function through the product list to check the names within the h5 tags against the input in the search bar.
         products.forEach(function (product) {
             const name = product.querySelector("h5").textContent.toLowerCase();
-            product.style.display = (query === "" || name.includes(query)) ? "" : "none";
+            if(query === "" || name.includes(query)){
+                product.style.display = "";    
+            } else {
+                product.style.display = "none";    
+            }
+            
         });
     }
 

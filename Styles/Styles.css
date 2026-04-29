@@ -14,7 +14,7 @@ https://stackoverflow.com/questions/17290701/maintain-image-aspect-ratio-in-caro
         height: 200px;
         width: 200px;
         object-fit: contain;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease; 
         
 }
 
