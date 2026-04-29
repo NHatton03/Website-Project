@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Settings</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- making The Css for Darkmode -->
+    <style>
+        body.dark-mode {
+            background-color: #121212 !important;
+            color: white !important;
+        }
+
+        .dark-mode .navbar {
+            background-color: #1f1f1f !important;
+        }
+
+        .settings-box {
+            margin-top: 50px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+        }
+
+        .dark-mode .settings-box {
+            background-color: #1e1e1e;
+        }
+    </style>
+</head>
+
+<!-- APPLY DARK MODE ON LOAD -->
+<body onload="loadDarkMode()">
+
+<div class="container">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container bg-dark mt-2">
+            <a class="navbar-brand text-white">Menu:</a>
+
+            <div>
+                <a class="text-white me-3" href="index.html">Home</a>
+                <a class="text-white me-3" href="Store.html">Store</a>
+                <a class="text-white me-3" href="Checkout.html">Checkout</a>
+                <a class="text-white"><u>Settings</u></a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="settings-box text-center">
+        <h2>Settings</h2>
+
+        <label>
+            <input type="checkbox" id="darkModeToggle">
+            Enable Dark Mode
+        </label>
+    </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+    const toggle = document.getElementById("darkModeToggle");
+
+    // Load saved setting when page opens
+    function loadDarkMode() {
+        if (localStorage.getItem("darkMode") === "enabled") {
+            document.body.classList.add("dark-mode");
+            toggle.checked = true;
+        }
+    }
+
+    // Toggle dark mode
+    toggle.addEventListener("change", function () {
+        if (toggle.checked) {
+            document.body.classList.add("dark-mode");
+            localStorage.setItem("darkMode", "enabled");
+        } else {
+            document.body.classList.remove("dark-mode");
+            localStorage.setItem("darkMode", "disabled");
+        }
+    });
+</script>
+
+</body>
+</html>
