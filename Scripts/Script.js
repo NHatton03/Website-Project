@@ -1,3 +1,9 @@
+// Apply dark mode on every page(Bryan)
+window.addEventListener("DOMContentLoaded", function () {
+    if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
+    }
+});
 document.addEventListener("DOMContentLoaded", function () {
     const button = document.getElementById("menuButton");
     const dropdown = document.querySelector(".dropdown");
@@ -119,4 +125,21 @@ onElement("searchBar", function () {
     }
 
     searchBar.addEventListener("input", filterProducts);
+});
+// Add Settings button to navbar automatically
+window.addEventListener("DOMContentLoaded", function () {
+    const nav = document.querySelector(".navbar-nav");
+
+    if (nav) {
+        const li = document.createElement("li");
+        li.classList.add("nav-item");
+
+        const link = document.createElement("a");
+        link.classList.add("nav-link", "text-white");
+        link.href = "settings.html";
+        link.textContent = "Settings";
+
+        li.appendChild(link);
+        nav.appendChild(li);
+    }
 });
