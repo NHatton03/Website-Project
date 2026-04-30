@@ -30,26 +30,29 @@ body.dark-mode {
             <div class="dropdown">
                 <a href="index.html">Home</a>
                 <a href="#"><u>Store</u></a>
-                <a href="#">Checkout</a>
+                <a href="Checkout.html">Checkout</a>
             </div>
         </div>
 
         <form class="search-box">
             <input type="text" id = "searchBar" placeholder="What are you looking for?">
-            <button type="submit"><img src="Images/shoppingCart.png" class="cart-btn"></button>
+            <button type="button" onclick="goToCheckout()">
+            <img src="Images/shoppingCart.png" class="cart-btn">
+            </button>
         </form>    
     </header>
     <br>
 
     <!--Added catalog of items plus prices and buttons - Naoise-->
+    <!--Changed button to have onclick="" to make checkout page work - aronas-->
     <div align = center class="row" id = "catalog">
-        <div class="col storepage-img hover-zoom" ><img src = "Images/Rode-Wireless-Microphone.jpg"><br><h5>Rode Wireless Microphone<br>€100.00</h5><button>Add to cart</button></div>
-        <div class="col storepage-img hover-zoom"><img src = "Images/SubZero-RadioMic.jpg"><br><h5>SubZero Radio Microphone<br>€94.50</h5><button>Add to cart</button></div>
+        <div class="col storepage-img hover-zoom" ><img src = "Images/Rode-Wireless-Microphone.jpg"><br><h5>Rode Wireless Microphone<br>€100.00</h5><button onclick="addToCart('Rode Wireless Microphone', 100)">Add to cart</button></div>
+        <div class="col storepage-img hover-zoom"><img src = "Images/SubZero-RadioMic.jpg"><br><h5>SubZero Radio Microphone<br>€94.50</h5><button onclick="addToCart('SubZero Radio Microphone', 94.50)">Add to cart</button></div>
         <div class="w-100"></div>
-        <div class="col storepage-img hover-zoom"><img src = "Images/Ten-Channel-Stereo-Mixer.jpg"><br><h5>Ten Channel Stereo Mixer<br>€229.00</h5><button>Add to cart</button></div>
-        <div class="col storepage-img hover-zoom"><img src = "Images/Zoom-H5-Recorder.jpg"><br><h5>Zoom H5 Recorder<br>€219.00</h5><button>Add to cart</button></div>
+        <div class="col storepage-img hover-zoom"><img src = "Images/Ten-Channel-Stereo-Mixer.jpg"><br><h5>Ten Channel Stereo Mixer<br>€229.00</h5><button onclick="addToCart('Ten Channel Stereo Mixer', 229)">Add to cart</button></div>
+        <div class="col storepage-img hover-zoom"><img src = "Images/Zoom-H5-Recorder.jpg"><br><h5>Zoom H5 Recorder<br>€219.00</h5><button onclick="addToCart('Zoom H5 Recorder', 219)">Add to cart</button></div>
         <div class="w-100"></div>
-        <div class="col storepage-img hover-zoom"><img src = "Images/XLR-Cable.jpg"><br><h5>XLR Cable<br>€9.50 (One free with any recorder or mixer)</h5><button>Add to cart</button></div>
+        <div class="col storepage-img hover-zoom"><img src = "Images/XLR-Cable.jpg"><br><h5>XLR Cable<br>€9.50 (One free with any recorder or mixer)</h5><button onclick="addToCart('XLR Cable', 9.50)">Add to cart</button></div>
 
     </div>
 
